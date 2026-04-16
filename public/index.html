@@ -56,6 +56,11 @@ body{font-family:var(--fb);background:var(--bg);color:var(--text);display:flex;h
 .vb-circ svg{position:absolute;top:0;left:0;}
 .vb-lbl{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--ff);font-size:11px;font-weight:800;color:rgba(255,255,255,.7);letter-spacing:.5px;}
 .vol-btn.active .vb-lbl{color:var(--accent);}
+.vol-btn.pay-btn.active{background:rgba(59,130,246,.13);}
+.vol-btn.pay-btn.active::before{background:var(--accent2);}
+.vol-btn.pay-btn .vb-code{color:rgba(100,180,255,.7);}
+.vol-btn.pay-btn.active .vb-code{color:#93C5FD;}
+.vol-btn.pay-btn.active .vb-lbl{color:var(--accent2);}
 .vb-info{flex:1;min-width:0;}
 .vb-code{font-family:var(--ff);font-size:14px;font-weight:700;color:rgba(255,255,255,.72);letter-spacing:1px;}
 .vol-btn.active .vb-code{color:#fff;}
@@ -410,7 +415,6 @@ body.role-tecnico #btn-sum{display:none!important;}
     <img src="data:image/png;base64,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" style="height:30px;object-fit:contain;flex-shrink:0;opacity:.92;" alt="MSL"><div id="tb-vol">VOL-01</div>
     <div class="tb-fields">
       <div class="tb-f"><label>Técnico</label><input type="text" id="inp-tec" placeholder="Nombre del técnico" oninput="autoSaveMeta()"></div>
-      <div class="tb-f"><label>Fecha</label><input type="date" id="inp-fecha" oninput="autoSaveMeta()"></div>
     </div>
     <div class="tb-actions">
       <button class="btn-sec" id="btn-ficha" onclick="toggleFicha()">⊕ Ficha Técnica</button>
@@ -602,7 +606,186 @@ var SISTEMAS = [
   ]}
 ];
 
-var FLEET = ['VOL-01','VOL-04','VOL-07','VOL-08','VOL-09'];
+// ============================================================
+// SISTEMAS PAYLOADER CAT 950L — PAY-06, PAY-09
+// ============================================================
+var SISTEMAS_950L = [
+  {id:'motor',nombre:'MOTOR C7.1 ACERT',num:'01',items:[
+    {id:'m01',n:'Nivel de aceite motor'},
+    {id:'m02',n:'Color / condición del aceite (decoloración, emulsión)'},
+    {id:'m03',n:'Fugas de aceite — sellos, juntas, tapas'},
+    {id:'m04',n:'Nivel de refrigerante'},
+    {id:'m05',n:'Estado de mangueras de refrigeración'},
+    {id:'m06',n:'Temperatura de operación / termostato'},
+    {id:'m07',n:'Correas — alternador, compresor de aire'},
+    {id:'m08',n:'Filtro de aire (indicador de restricción)'},
+    {id:'m09',n:'Turbocompresor — juego axial, fugas de aceite'},
+    {id:'m10',n:'Cárter / block — grietas, fisuras visibles'}
+  ]},
+  {id:'combustible',nombre:'COMBUSTIBLE',num:'02',items:[
+    {id:'c01',n:'Nivel de combustible'},
+    {id:'c02',n:'Filtro primario — estado, indicador de colmatación'},
+    {id:'c03',n:'Filtro secundario — estado, indicador de colmatación'},
+    {id:'c04',n:'Fugas en líneas, mangueras y conexiones'},
+    {id:'c05',n:'Bomba de alimentación (caudal, ruido)'},
+    {id:'c06',n:'Tanque — estado, tapa, respiradero, soporte'}
+  ]},
+  {id:'transmision',nombre:'TRANSMISIÓN 4F/4R',num:'03',items:[
+    {id:'t01',n:'Nivel de aceite de transmisión'},
+    {id:'t02',n:'Fugas externas de aceite'},
+    {id:'t03',n:'Funcionamiento de marchas (1ra–4ta F y R)'},
+    {id:'t04',n:'Convertidor de par — temperatura, deslizamiento'},
+    {id:'t05',n:'Árbol de mando — crucetas, juego, vibraciones'},
+    {id:'t06',n:'Bloqueo de diferencial (si aplica)'}
+  ]},
+  {id:'articulacion',nombre:'ARTICULACIÓN CENTRAL',num:'04',items:[
+    {id:'ar01',n:'Pin de articulación central — juego, lubricación'},
+    {id:'ar02',n:'Bujes de articulación — desgaste, holgura'},
+    {id:'ar03',n:'Sellos de articulación — fugas, estado'},
+    {id:'ar04',n:'Topes de articulación — desgaste visible'},
+    {id:'ar05',n:'Juego lateral máximo (referencia < 5 mm)'},
+    {id:'ar06',n:'Pernos de sujeción articulación — torque, completitud'}
+  ]},
+  {id:'direccion',nombre:'DIRECCIÓN ARTICULADA',num:'05',items:[
+    {id:'d01',n:'Cilindros de dirección — fugas, rayones en vástago'},
+    {id:'d02',n:'Mangueras hidráulicas de dirección — estado, roces'},
+    {id:'d03',n:'Nivel aceite hidráulico de dirección'},
+    {id:'d04',n:'Respuesta de dirección — tiempo, esfuerzo'},
+    {id:'d05',n:'Válvula de dirección — fugas, respuesta'},
+    {id:'d06',n:'Ángulo de articulación máximo (izquierda / derecha)'}
+  ]},
+  {id:'frenos',nombre:'FRENOS',num:'06',items:[
+    {id:'f01',n:'Freno de servicio delantero — forros (espesor residual)'},
+    {id:'f02',n:'Freno de servicio trasero — forros (espesor residual)'},
+    {id:'f03',n:'Freno de estacionamiento — efectividad'},
+    {id:'f04',n:'Fugas en líneas hidráulicas'},
+    {id:'f05',n:'Presión de aire del sistema (mín 8 bar)'},
+    {id:'f06',n:'Discos húmedos — temperatura, estado general'}
+  ]},
+  {id:'suspension',nombre:'SUSPENSIÓN',num:'07',items:[
+    {id:'s01',n:'Amortiguadores delanteros — fugas, golpeteo'},
+    {id:'s02',n:'Amortiguadores traseros — fugas, golpeteo'},
+    {id:'s03',n:'Bujes y silentblocks — desgaste, juego'}
+  ]},
+  {id:'hidraulico',nombre:'HIDRÁULICO IMPLEMENTOS (280 bar)',num:'08',items:[
+    {id:'h01',n:'Nivel de aceite hidráulico'},
+    {id:'h02',n:'Bomba hidráulica — ruido, presión (ref. 280 bar), caudal'},
+    {id:'h03',n:'Cilindro de levante (boom) — fugas, rayones en vástago'},
+    {id:'h04',n:'Cilindro de inclinación cucharón (tilt) — fugas, rayones'},
+    {id:'h05',n:'Mangueras hidráulicas implementos — estado, roces, sujeción'},
+    {id:'h06',n:'Válvulas de control implementos — respuesta, fugas'},
+    {id:'h07',n:'Filtro hidráulico — estado, indicador de colmatación'},
+    {id:'h08',n:'Tiempo de levante a altura máxima (registrar en obs.)'}
+  ]},
+  {id:'cucharon',nombre:'CUCHARÓN E IMPLEMENTOS 2.7 m³',num:'09',items:[
+    {id:'cu01',n:'Estructura del cucharón — fisuras, grietas, deformaciones'},
+    {id:'cu02',n:'Cuchillas / labios de corte — desgaste, sujeción, pernos'},
+    {id:'cu03',n:'Dientes del cucharón — desgaste, completitud, chavetas'},
+    {id:'cu04',n:'Pasadores de levante y tilt — juego, lubricación'},
+    {id:'cu05',n:'Wear plates laterales — estado, espesor residual'},
+    {id:'cu06',n:'Bisagras de levante — juego, lubricación, desgaste'}
+  ]},
+  {id:'electrico',nombre:'SISTEMA ELÉCTRICO',num:'10',items:[
+    {id:'el01',n:'Batería — carga, bornes, sujeción, corrosión'},
+    {id:'el02',n:'Alternador — voltaje de salida (ref. 13.5–14.5 V)'},
+    {id:'el03',n:'Motor de arranque — tiempo de respuesta, ruido'},
+    {id:'el04',n:'Fusibles y relés — caja central, sin quemados'},
+    {id:'el05',n:'Cableado visible — rozaduras, quemaduras, sujeción'}
+  ]},
+  {id:'luces',nombre:'LUCES E ILUMINACIÓN',num:'11',items:[
+    {id:'l01',n:'Faros delanteros — altas y bajas'},
+    {id:'l02',n:'Luces de posición y giro (delantera / trasera)'},
+    {id:'l03',n:'Luces de retroceso'},
+    {id:'l04',n:'Baliza y alarma sonora de retroceso'},
+    {id:'l05',n:'Luces de freno'},
+    {id:'l06',n:'Iluminación de tablero e instrumentos'}
+  ]},
+  {id:'neumaticos',nombre:'NEUMÁTICOS OTR 20.5R25 (4 und.)',num:'12',items:[
+    {id:'n01',n:'P1 — Delantera izquierda (presión, desgaste, daños)'},
+    {id:'n02',n:'P2 — Delantera derecha (presión, desgaste, daños)'},
+    {id:'n03',n:'P3 — Trasera izquierda (presión, desgaste, daños)'},
+    {id:'n04',n:'P4 — Trasera derecha (presión, desgaste, daños)'},
+    {id:'n05',n:'Pernos de rueda — cantidad completa, torque (4 ruedas)'},
+    {id:'n06',n:'Estado de flancos — cortes, burbujas, separación de capas'}
+  ]},
+  {id:'cabina',nombre:'CABINA Y ERGONOMÍA',num:'13',items:[
+    {id:'ca01',n:'Asiento y cinturón de seguridad'},
+    {id:'ca02',n:'Espejos retrovisores — ajuste, estado, limpieza'},
+    {id:'ca03',n:'Parabrisas y limpiaparabrisas (escobillas, depósito)'},
+    {id:'ca04',n:'Puertas y seguros — cierre correcto, bisagras'},
+    {id:'ca05',n:'Tablero de instrumentos — alarmas activas, MID'},
+    {id:'ca06',n:'Extintor — carga vigente, acceso, soporte'},
+    {id:'ca07',n:'Botiquín — completo, fecha vencimiento'},
+    {id:'ca08',n:'Triángulos / conos de emergencia'}
+  ]},
+  {id:'escape',nombre:'SISTEMA DE ESCAPE',num:'14',items:[
+    {id:'ex01',n:'Silenciador — estado, sujeción, oxidación'},
+    {id:'ex02',n:'Catalizador / DPF (si aplica)'},
+    {id:'ex03',n:'Tubería de escape — fugas, quemaduras en cableado cercano'},
+    {id:'ex04',n:'Emisión visible — color de humo (negro=mezcla rica, azul=aceite, blanco=agua)'}
+  ]},
+  {id:'enfriamiento',nombre:'ENFRIAMIENTO / RADIADOR',num:'15',items:[
+    {id:'en01',n:'Radiador — aletas, limpieza, fugas, deformaciones'},
+    {id:'en02',n:'Intercooler — estado, fugas, sujeción'},
+    {id:'en03',n:'Ventilador de enfriamiento — aspas, embrague viscoso, guarda'},
+    {id:'en04',n:'Tapa de radiador — presión, estado del sello'},
+    {id:'en05',n:'Depósito de expansión — nivel, estado, tapa'},
+    {id:'en06',n:'Termostato — apertura a temperatura correcta (~85°C)'},
+    {id:'en07',n:'Bomba de agua — fugas por sello, ruido anormal'}
+  ]},
+  {id:'aire',nombre:'SISTEMA NEUMÁTICO',num:'16',items:[
+    {id:'ai01',n:'Compresor de aire — caudal, ruido, temperatura'},
+    {id:'ai02',n:'Secador de aire — purga automática, cartucho desecante'},
+    {id:'ai03',n:'Tanques de aire — presión (8–10 bar), válvulas de purga'},
+    {id:'ai04',n:'Válvula de seguridad — calibración, funcionamiento'},
+    {id:'ai05',n:'Mangueras y racores neumáticos — fugas, estado'},
+    {id:'ai06',n:'Manómetros de cabina — lectura correcta'}
+  ]},
+  {id:'engrase',nombre:'ENGRASE Y LUBRICACIÓN',num:'17',items:[
+    {id:'eg01',n:'Sistema de engrase centralizado — bomba, depósito, líneas (si aplica)'},
+    {id:'eg02',n:'Puntos de engrase manual — bujes, rótulas, pasadores'},
+    {id:'eg03',n:'Estado del lubricante en puntos visibles (exceso / falta)'},
+    {id:'eg04',n:'Purgas y sellos de engrase — no obturados'},
+    {id:'eg05',n:'Cadencia de engrase — ¿se respetó el intervalo? (S/N)'},
+    {id:'eg06',n:'Horómetro último engrase realizado (registrar en obs.)'}
+  ]},
+  {id:'comunicacion',nombre:'COMUNICACIÓN, SEGURIDAD Y TELEMETRÍA',num:'18',items:[
+    {id:'co01',n:'Radio de comunicación — funcionamiento, batería de respaldo'},
+    {id:'co02',n:'Sistema GPS / rastreo — señal activa, antena'},
+    {id:'co03',n:'Cámara de retroceso — imagen limpia, ángulo correcto'},
+    {id:'co04',n:'Sensores de proximidad / colisión (si aplica)'},
+    {id:'co05',n:'Sistema detección fatiga / somnolencia (si aplica)'},
+    {id:'co06',n:'Tacógrafo / VDR — registrando, sin alertas activas'},
+    {id:'co07',n:'Killswitch / interruptor de emergencia — accesible, funcional'}
+  ]}
+];
+
+// SISTEMAS PAYLOADER CAT 962L — PAY-10 (hereda 950L con 4 modificaciones)
+var SISTEMAS_962L = JSON.parse(JSON.stringify(SISTEMAS_950L));
+SISTEMAS_962L[0].nombre   = 'MOTOR C9.3 ACERT';
+SISTEMAS_962L[0].items[7] = {id:'m08',n:'Filtro de aire — doble etapa, indicador de restricción'};
+SISTEMAS_962L[7].nombre   = 'HIDRÁULICO IMPLEMENTOS (310 bar)';
+SISTEMAS_962L[7].items[1] = {id:'h02',n:'Bomba hidráulica — ruido, presión (ref. 310 bar), caudal'};
+SISTEMAS_962L[8].nombre   = 'CUCHARÓN E IMPLEMENTOS 3.4 m³';
+SISTEMAS_962L[11].nombre  = 'NEUMÁTICOS OTR 23.5R25 (4 und.)';
+SISTEMAS_962L[11].items[0]= {id:'n01',n:'P1 — Delantera izquierda (presión ref. 23.5R25, desgaste, daños)'};
+SISTEMAS_962L[11].items[1]= {id:'n02',n:'P2 — Delantera derecha (presión ref. 23.5R25, desgaste, daños)'};
+SISTEMAS_962L[11].items[2]= {id:'n03',n:'P3 — Trasera izquierda (presión ref. 23.5R25, desgaste, daños)'};
+SISTEMAS_962L[11].items[3]= {id:'n04',n:'P4 — Trasera derecha (presión ref. 23.5R25, desgaste, daños)'};
+
+function getSistemasForVol(vol) {
+  if (vol === 'PAY-10') return SISTEMAS_962L;
+  if (vol.indexOf('PAY-') === 0) return SISTEMAS_950L;
+  return SISTEMAS;
+}
+function getModeloForVol(vol) {
+  if (vol === 'PAY-06' || vol === 'PAY-09') return 'Payloader CAT 950L';
+  if (vol === 'PAY-10') return 'Payloader CAT 962L';
+  return 'Volquete Volvo FM';
+}
+
+var GLOBAL_DATE = '2026-04-15';
+var FLEET = ['VOL-01','VOL-04','VOL-07','VOL-08','VOL-09','PAY-06','PAY-09','PAY-10'];
 var activeVol = 'VOL-01';
 var activeView = 'dash';
 var openSys = {};
@@ -615,20 +798,19 @@ var state;
 // ============================================================
 function initState() {
   var st = {};
-  var d = new Date();
-  var today = d.getFullYear()+'-'+pad2(d.getMonth()+1)+'-'+pad2(d.getDate());
   for (var i = 0; i < FLEET.length; i++) {
     var v = FLEET[i];
     st[v] = {
-      tecnico:'', fecha: today,
+      tecnico:'', fecha: GLOBAL_DATE,
       ficha:{modelo_motor:'',serie_motor:'',serie_equipo:'',horometro:'',kilometraje:''},
       systems:{}
     };
-    for (var j = 0; j < SISTEMAS.length; j++) {
-      var sid = SISTEMAS[j].id;
+    var sis = getSistemasForVol(v);
+    for (var j = 0; j < sis.length; j++) {
+      var sid = sis[j].id;
       st[v].systems[sid] = {};
-      for (var k = 0; k < SISTEMAS[j].items.length; k++) {
-        st[v].systems[sid][SISTEMAS[j].items[k].id] = {cond:'NE',obs:'',imgs:[]};
+      for (var k = 0; k < sis[j].items.length; k++) {
+        st[v].systems[sid][sis[j].items[k].id] = {cond:'NE',obs:'',imgs:[]};
       }
     }
   }
@@ -715,6 +897,7 @@ function getSysProg(vol, sid) {
   return {total:total,ev:ev};
 }
 function getSysWorst(vol, sid) {
+  if (!state[vol] || !state[vol].systems[sid]) return 'NE';
   var items = state[vol].systems[sid];
   var hc=false,hr=false,hok=false,hn=false;
   for (var id in items){
@@ -725,8 +908,9 @@ function getSysWorst(vol, sid) {
 }
 function getTotalProg(vol) {
   var total=0,ev=0,ok=0,r=0,c=0;
-  for (var j=0;j<SISTEMAS.length;j++){
-    var sid=SISTEMAS[j].id;
+  var sis=getSistemasForVol(vol);
+  for (var j=0;j<sis.length;j++){
+    var sid=sis[j].id;
     for (var iid in state[vol].systems[sid]){
       total++; var cond=state[vol].systems[sid][iid].cond;
       if(cond!=='NE') ev++;
@@ -769,13 +953,21 @@ function circSVG(pct, hasCrit, hasReg) {
 // ============================================================
 function renderSidebar() {
   var html = '';
+  var shownPayHdr = false;
   for (var i = 0; i < FLEET.length; i++) {
     var v = FLEET[i];
+    var isPay = v.indexOf('PAY-') === 0;
+    if (isPay && !shownPayHdr) {
+      html += '<div class="sb-div"></div>';
+      html += '<div class="sb-sec" style="color:rgba(59,130,246,.5);">PAYLOADERS CAT</div>';
+      shownPayHdr = true;
+    }
     var p = getTotalProg(v);
     var pct = p.total>0 ? Math.round((p.ev/p.total)*100) : 0;
-    var code = v.replace('VOL-','');
+    var code = isPay ? v.replace('PAY-','') : v.replace('VOL-','');
     var ac = (v===activeVol && activeView==='vol') ? ' active' : '';
-    html += '<button class="vol-btn'+ac+'" onclick="switchVol(\''+v+'\')">';
+    var payClass = isPay ? ' pay-btn' : '';
+    html += '<button class="vol-btn'+payClass+ac+'" onclick="switchVol(\''+v+'\')">';
     html += '<div class="vb-circ">';
     html += circSVG(pct, p.c>0, p.r>0);
     html += '<div class="vb-lbl">'+code+'</div>';
@@ -828,7 +1020,7 @@ function renderDash() {
   html += '<div class="dash-hdr">';
   html += '<div class="dash-co">Cía. Minera Santa Luisa S.A. · Unidad Minera Huanzala · Planeamiento de Mantenimiento</div>';
   html += '<div class="dash-title">PANEL EJECUTIVO<br><span>INSPECCIÓN TÉCNICA</span> INTEGRAL</div>';
-  html += '<div class="dash-sub">Flota Volquetes Volvo FM · 18 Sistemas · '+totalAll+' Ítems por unidad · '+dateStr+'</div>';
+  html += '<div class="dash-sub">Flota Mixta: 5 Volquetes Volvo FM + 3 Payloaders CAT · 18 Sistemas por unidad · '+dateStr+'</div>';
   html += '</div>';
 
   // KPI Cards
@@ -861,23 +1053,39 @@ function renderDash() {
   }
   html += '</div>';
 
-  // Heatmap (compact)
+  // Heatmap — Volquetes
+  var FLEET_VOL = FLEET.filter(function(v){return v.indexOf('VOL-')===0;});
+  var FLEET_PAY = FLEET.filter(function(v){return v.indexOf('PAY-')===0;});
   html += '<div class="dash-card">';
-  html += '<div class="dc-hd"><div class="dc-hd-dot" style="background:var(--accent2)"></div>MAPA DE ESTADO POR SISTEMA</div>';
-  html += '<div class="hm-wrap"><table class="hm-tbl"><thead><tr>';
-  html += '<th class="hm-th">Sistema</th>';
-  for (var vi=0;vi<FLEET.length;vi++) html += '<th class="hm-th">'+FLEET[vi].replace('VOL-','')+'</th>';
+  html += '<div class="dc-hd"><div class="dc-hd-dot" style="background:var(--accent2)"></div>MAPA ESTADO — VOLQUETES</div>';
+  html += '<div class="hm-wrap"><table class="hm-tbl"><thead><tr><th class="hm-th">Sistema</th>';
+  for (var vi=0;vi<FLEET_VOL.length;vi++) html += '<th class="hm-th">'+FLEET_VOL[vi].replace('VOL-','')+'</th>';
   html += '</tr></thead><tbody>';
   for (var j=0;j<SISTEMAS.length;j++) {
     var sys=SISTEMAS[j];
     html += '<tr><td class="hm-td">'+sys.num+' '+sys.nombre+'</td>';
-    for (var vi2=0;vi2<FLEET.length;vi2++) {
-      var w=getSysWorst(FLEET[vi2],sys.id);
+    for (var vi2=0;vi2<FLEET_VOL.length;vi2++) {
+      var w=getSysWorst(FLEET_VOL[vi2],sys.id);
       html += '<td class="hm-td"><span class="hm-cell '+hmCls(w)+'">'+hmLbl(w)+'</span></td>';
     }
     html += '</tr>';
   }
   html += '</tbody></table></div>';
+  // Heatmap — Payloaders
+  html += '<div style="margin-top:12px;"><div class="dc-hd" style="margin-bottom:10px;"><div class="dc-hd-dot" style="background:#3B82F6"></div>MAPA ESTADO — PAYLOADERS CAT</div>';
+  html += '<div class="hm-wrap"><table class="hm-tbl"><thead><tr><th class="hm-th">Sistema</th>';
+  for (var vp=0;vp<FLEET_PAY.length;vp++) html += '<th class="hm-th">'+FLEET_PAY[vp].replace('PAY-','')+'</th>';
+  html += '</tr></thead><tbody>';
+  for (var jp=0;jp<SISTEMAS_950L.length;jp++) {
+    var sysp=SISTEMAS_950L[jp];
+    html += '<tr><td class="hm-td">'+sysp.num+' '+sysp.nombre+'</td>';
+    for (var vp2=0;vp2<FLEET_PAY.length;vp2++) {
+      var wp=getSysWorst(FLEET_PAY[vp2],sysp.id);
+      html += '<td class="hm-td"><span class="hm-cell '+hmCls(wp)+'">'+hmLbl(wp)+'</span></td>';
+    }
+    html += '</tr>';
+  }
+  html += '</tbody></table></div></div>';
   html += '</div>';
 
   html += '</div>'; // dash-row
@@ -909,9 +1117,9 @@ function switchVol(vol) {
 
 function renderTopbar() {
   var v = activeVol;
-  document.getElementById('tb-vol').innerHTML = 'VOLQUETE <span>'+v+'</span>';
+  var tipo = v.indexOf('PAY-')===0 ? 'PAYLOADER' : 'VOLQUETE';
+  document.getElementById('tb-vol').innerHTML = tipo+' <span>'+v+'</span>';
   document.getElementById('inp-tec').value = state[v].tecnico || '';
-  document.getElementById('inp-fecha').value = state[v].fecha || '';
 }
 
 // ============================================================
@@ -975,8 +1183,9 @@ function renderVolView() {
   html += '</div></div>';
 
   // Systems
-  for (var j=0;j<SISTEMAS.length;j++) {
-    var sys = SISTEMAS[j];
+  var sisVol = getSistemasForVol(v);
+  for (var j=0;j<sisVol.length;j++) {
+    var sys = sisVol[j];
     var sp = getSysProg(v, sys.id);
     var worst = getSysWorst(v, sys.id);
     var openCls = openSys[sys.id] ? ' open' : '';
@@ -1065,11 +1274,12 @@ function renderSummary() {
   html += '<div class="alerts-row">';
   for (var i=0;i<FLEET.length;i++) {
     var v=FLEET[i]; var critItems=[];
-    for (var j=0;j<SISTEMAS.length;j++) {
-      var sys=SISTEMAS[j];
+    var sisSum=getSistemasForVol(v);
+    for (var j=0;j<sisSum.length;j++) {
+      var sys=sisSum[j];
       for (var k=0;k<sys.items.length;k++) {
-        var s=state[v].systems[sys.id][sys.items[k].id];
-        if(s.cond==='CRITICO') critItems.push({sys:sys.nombre,itm:sys.items[k].n});
+        var s=state[v].systems[sys.id] && state[v].systems[sys.id][sys.items[k].id];
+        if(s && s.cond==='CRITICO') critItems.push({sys:sys.nombre,itm:sys.items[k].n});
       }
     }
     var hasCrit = critItems.length>0;
@@ -1163,13 +1373,11 @@ function setObs(sid, iid, val) {
 
 function autoSaveMeta() {
   state[activeVol].tecnico = document.getElementById('inp-tec').value;
-  state[activeVol].fecha   = document.getElementById('inp-fecha').value;
   apiAutoSave();
 }
 
 function saveData() {
   state[activeVol].tecnico = document.getElementById('inp-tec').value;
-  state[activeVol].fecha   = document.getElementById('inp-fecha').value;
   apiSaveCurrentVol(true);
 }
 
@@ -1178,8 +1386,7 @@ function resetVol() {
   var fresh = initState();
   state[activeVol] = fresh[activeVol];
   // Borrar en servidor también
-  var f = state[activeVol].fecha;
-  apiFetch('DELETE', '/api/inspecciones/'+activeVol+'/'+f).catch(function(){});
+  apiFetch('DELETE', '/api/inspecciones/'+activeVol+'/'+GLOBAL_DATE).catch(function(){});
   openSys = {};
   closeFicha();
   renderTopbar();
@@ -1371,7 +1578,8 @@ function genChecklist() {
   html += '<div class="hdr-main">';
   html += '<div class="hdr-co">Cía. Minera Santa Luisa S.A. · Unidad Minera Huanzala · Planeamiento de Mantenimiento</div>';
   html += '<div class="hdr-title">Checklist de Inspección Técnica Integral</div>';
-  html += '<div class="hdr-sub">Volquete Volvo FM — '+v+' · 18 Sistemas · '+SISTEMAS.reduce(function(a,s){return a+s.items.length;},0)+' Ítems de verificación</div>';
+  var sisCL=getSistemasForVol(v);
+  html += '<div class="hdr-sub">'+getModeloForVol(v)+' — '+v+' · 18 Sistemas · '+sisCL.reduce(function(a,s){return a+s.items.length;},0)+' Ítems de verificación</div>';
   html += '<div class="hdr-meta">';
   html += '<div class="hm-f"><label>Técnico Inspector</label><div class="val">'+( meta.tecnico||'')+'</div></div>';
   html += '<div class="hm-f"><label>Fecha</label><div class="val">'+( meta.fecha||'')+'</div></div>';
@@ -1393,8 +1601,8 @@ function genChecklist() {
   html += '</div></div>';
 
   // Systems
-  for (var j=0;j<SISTEMAS.length;j++) {
-    var sys=SISTEMAS[j];
+  for (var j=0;j<sisCL.length;j++) {
+    var sys=sisCL[j];
     html += '<div class="sys-section">';
     html += '<div class="sys-title"><span>'+sys.num+' — '+sys.nombre+(sys.isNew?'<span class="new-tag">NUEVO</span>':'')+'</span><span class="sn">'+sys.items.length+' ítems</span></div>';
     html += '<table><thead><tr>';
@@ -1495,7 +1703,7 @@ function genReport() {
   html += '<div class="pg-hdr" style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;"><div style="flex:1;"><h1>REPORTE DE INSPECCIÓN TÉCNICA INTEGRAL — '+v+'</h1>';
   html += '<p>Cía. Minera Santa Luisa S.A. &nbsp;·&nbsp; Unidad Minera Huanzala &nbsp;·&nbsp; Planeamiento de Mantenimiento</p>';
   html += '<div class="meta-g">';
-  html += '<div class="mi"><label>Unidad</label><span>'+v+' — Volvo FM</span></div>';
+  html += '<div class="mi"><label>Unidad</label><span>'+v+' — '+getModeloForVol(v)+'</span></div>';
   html += '<div class="mi"><label>Técnico</label><span>'+(meta.tecnico||'—')+'</span></div>';
   html += '<div class="mi"><label>Fecha</label><span>'+(meta.fecha||'—')+'</span></div>';
   html += '<div class="mi"><label>Modelo Motor</label><span>'+(f.modelo_motor||'—')+'</span></div>';
@@ -1519,8 +1727,9 @@ function genReport() {
   html += '</div>';
 
   // Critical items
+  var sisRpt=getSistemasForVol(v);
   var critList=[];
-  for(var j=0;j<SISTEMAS.length;j++){var sys=SISTEMAS[j];for(var k=0;k<sys.items.length;k++){var s=state[v].systems[sys.id][sys.items[k].id];if(s.cond==='CRITICO') critList.push({sis:sys.nombre,itm:sys.items[k].n,obs:s.obs,imgs:s.imgs||[]});}}
+  for(var j=0;j<sisRpt.length;j++){var sys=sisRpt[j];for(var k=0;k<sys.items.length;k++){var s=state[v].systems[sys.id]&&state[v].systems[sys.id][sys.items[k].id];if(s&&s.cond==='CRITICO') critList.push({sis:sys.nombre,itm:sys.items[k].n,obs:s.obs,imgs:s.imgs||[]});}}
   if(critList.length>0){
     html += '<div class="crit-box"><h3>⚠ ÍTEMS CRÍTICOS — INTERVENCIÓN INMEDIATA ('+critList.length+')</h3>';
     html += '<table class="main"><tr><th>Sistema</th><th>Ítem</th><th>Observación</th></tr>';
@@ -1536,8 +1745,8 @@ function genReport() {
   }
 
   // Systems
-  for(var j2=0;j2<SISTEMAS.length;j2++){
-    var sys2=SISTEMAS[j2];
+  for(var j2=0;j2<sisRpt.length;j2++){
+    var sys2=sisRpt[j2];
     var sp2=getSysProg(v,sys2.id);
     html += '<div class="sec-hd"><span>'+sys2.num+' &nbsp;·&nbsp; '+sys2.nombre+(sys2.isNew?'<span class="new-badge">NUEVO</span>':'')+'</span><span style="opacity:.6;font-weight:400;">'+sp2.ev+'/'+sp2.total+' evaluados</span></div>';
     html += '<table class="main"><tr><th style="width:45%">Ítem</th><th style="width:80px">Condición</th><th>Observaciones</th></tr>';
@@ -1614,9 +1823,7 @@ function doLogin(e) {
     document.getElementById('login-overlay').style.display = 'none';
     applyRole(currentUser.role);
     updateUserBar();
-    var d = new Date();
-    var today = d.getFullYear()+'-'+pad2(d.getMonth()+1)+'-'+pad2(d.getDate());
-    loadAllFromAPI(today).then(function() {
+    loadAllFromAPI(GLOBAL_DATE).then(function() {
       renderSidebar();
       showDash();
       showToast('Bienvenido, ' + currentUser.nombre, 's');
@@ -1670,9 +1877,7 @@ function checkAuth() {
     document.getElementById('login-overlay').style.display = 'none';
     applyRole(currentUser.role);
     updateUserBar();
-    var d = new Date();
-    var today = d.getFullYear()+'-'+pad2(d.getMonth()+1)+'-'+pad2(d.getDate());
-    loadAllFromAPI(today).then(function() {
+    loadAllFromAPI(GLOBAL_DATE).then(function() {
       renderSidebar();
       showDash();
     });
